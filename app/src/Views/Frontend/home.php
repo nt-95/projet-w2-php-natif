@@ -1,4 +1,5 @@
-<h1>Un titre de home page</h1>
+<h1>MySpace</h1>
+<h2><?php echo  "Bienvenue sur MySpace " . $user->getName();?></h2>
 
 <?php
 /**
