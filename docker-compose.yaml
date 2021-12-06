@@ -6,22 +6,24 @@ services:
             context: .
             dockerfile: Dockerfile
         ports:
-            - 5555:80
+            - '5555:80'
         volumes:
-            - ./src:/var/www/html
+            - ./app:/var/www/html
 
     db:
-        image: mariadb
+        image: 'mariadb:10.6.4'
         restart: always
-        volumes:
-            - ./database:/var/lib/mysql
+        ports:
+            - '127.0.0.1:3306:3306'
         environment:
-            MYSQL_ROOT_PASSWORD: example
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
 
     phpmyadmin:
         image: phpmyadmin
         restart: always
         ports:
-            - 8080:80
+            - '8080:80'
         environment:
             - PMA_ARBITRARY=1
