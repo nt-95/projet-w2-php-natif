@@ -26,10 +26,10 @@ class PostManager extends BaseManager
     public function getPostById(int $id): Post
     {
         // TODO - Posts by Id
-       $query = $this->db->prepare('SELECT * FROM post WHERE id = :id');
+       $query = $this->db->prepare('SELECT * FROM post WHERE id_post = :id');
        $query->bindValue(':id', $id, \PDO::PARAM_INT);
        $query->execute();
-       $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETC_PROPS_LATE, 'App\Entity\Post');
+       $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
        return $query->fetch();
     }
     /**
