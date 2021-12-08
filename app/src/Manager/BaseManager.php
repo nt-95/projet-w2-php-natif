@@ -2,12 +2,15 @@
 
 namespace App\Manager;
 
+use App\Manager\PDO\PDOFactory;
+
 abstract class BaseManager
 {
-    protected $pdo;
+    protected $db;
 
-    public function __construct($pdo)
+    public function __construct()
     {
-        $this->pdo = $pdo;
+        $pdo = new PDOFactory();
+        $this->db = $pdo->getBdd();
     }
 }
