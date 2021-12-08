@@ -13,7 +13,7 @@ class PostManager extends BaseManager
      */
     public function getAllPosts(): array
     {
-        $query = $this->pdo->query('SELECT * FROM posts ORDER BY id DESC');
+        $query = $this->db->query('SELECT * FROM post ORDER BY id DESC');
         $query->setFetchModel(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
         return $query->fetchAll();
     }
