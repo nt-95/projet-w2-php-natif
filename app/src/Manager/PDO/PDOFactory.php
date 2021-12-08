@@ -7,11 +7,11 @@ use PDO;
 
 class PDOFactory
 {
-    private $bdd;
+    private $db;
 
     public function __construct()  {
         try {
-            $this->bdd = new PDO('mysql:host=db;dbname=mySpace', 'root', 'password');
+            $this->db = new PDO('mysql:host=db;dbname=MySpace', 'root', 'password');
         }
         catch (\PDOException $e) {
             echo(JSONResponse::internalServerError());
@@ -20,7 +20,7 @@ class PDOFactory
         }
     }
 
-    public function getBdd() {
-        return $this->bdd;
+    public function getDb() {
+        return $this->db;
     }
 }
