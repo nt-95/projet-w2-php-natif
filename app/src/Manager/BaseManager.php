@@ -11,6 +11,6 @@ abstract class BaseManager
     public function __construct()
     {
         $pdo = new PDOFactory();
-        $this->db = $pdo->getBdd();
+        $this->db = $pdo->getDb();
     }
 }
