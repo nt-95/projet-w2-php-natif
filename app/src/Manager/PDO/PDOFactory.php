@@ -14,7 +14,7 @@ class PDOFactory
             $this->db = new PDO('mysql:host=db;dbname=MySpace', 'root', 'password');
         }
         catch (\PDOException $e) {
-            echo(JSONResponse::internalServerError());
+            // echo(JSONResponse::internalServerError());
             die('Error :' . $e->getMessage());
 
         }

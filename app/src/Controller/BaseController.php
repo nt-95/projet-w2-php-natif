@@ -29,7 +29,7 @@ abstract class BaseController
         ob_start();
         require $view;
         $content = ob_get_clean();
-        require $this->templatefile;
+        require $this->templateFile;
         exit;
 
     }
