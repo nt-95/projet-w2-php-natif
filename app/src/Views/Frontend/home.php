@@ -11,7 +11,7 @@ echo "user : " ;
  var_dump($user);
  echo " ______________ ";
 echo "posts : " ;
-var_dump($posts);
+// var_dump($posts);
  echo " ______________ ";
 echo $test;
 
