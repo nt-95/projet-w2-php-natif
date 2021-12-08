@@ -13,13 +13,23 @@ class PostManager extends BaseManager
      */
     public function getAllPosts(): array
     {
-        // TODO -  Get all posts
-        return [];
+        $query = $this->pdo->query('SELECT * FROM posts ORDER BY id DESC');
+        $query->setFetchModel(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
+        return $query->fetchAll();
     }
+
+    /**
+     * @param int $id
+     * @return Post | bool
+     */
 
     public function getPostById(int $id): Post
     {
-        // TODO - Posts by Id
+       $query = $this->db->prepare('SELECT * FROM posts WHERE id = :id');
+       $query->bindValue(':id', $id, \PDO::PARAM_INT);
+       $query->execute();
+       $query->setFetchModel(\PDO::FETCH_CLASS | \PDO::FETC_PROPS_LATE, 'Entity\Post');
+       return $query->fetch();
     }
 
     /**
