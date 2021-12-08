@@ -22,7 +22,8 @@ class PostController extends BaseController
             [
                 'posts' => $posts,
                 'postManager' => $postManager,
-                'user' => new Author(),
+                'user' => "Naiara",
+                // 'user' => new Author(),
                 'test' => 'je suis un test'
             ],
             'Home page'
