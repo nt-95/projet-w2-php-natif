@@ -5,9 +5,10 @@ namespace App\Entity;
 class Post
 {
     private int $id;
-    private \DateTime $date;
+    private string $date;
     private string $title;
     private string $content;
+    private string $author;
     private int $authorId;
 
     /**
