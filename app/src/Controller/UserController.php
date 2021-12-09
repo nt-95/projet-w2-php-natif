@@ -46,7 +46,7 @@ class UserController extends BaseController
     }
 
     public function executeAllUsers() {
-        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $userManager = new UserManager();
         $users = $userManager->getAllUsers();
 
         $this->render(
@@ -56,7 +56,7 @@ class UserController extends BaseController
     }
 
     public function executeRemoveUser() {
-        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $userManager = new UserManager();
         $user = $userManager->executeRemoveUser($user_id);
 
         // $this->render(
@@ -66,7 +66,7 @@ class UserController extends BaseController
     }
 
     public function executeSetAdmin() {
-        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $userManager = new UserManager();
         $user = $userManager->executeSetAdmin($user_id);
         Flash::setFlash('alert', 'Vous venez de passer cette personne en admin');
 

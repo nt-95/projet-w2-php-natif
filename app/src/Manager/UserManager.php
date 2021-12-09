@@ -130,14 +130,6 @@ class UserManager extends BaseManager
 
     }
 
-    public function getAllUsers() : array
-    {
-        $query = $this->db->query('SELECT * FROM user');
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
-
-        return $query->fetchAll();
-    }
-
     public function setAdmin(int $id_user) : bool
     {
         // TODO : Define
