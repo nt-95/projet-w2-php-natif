@@ -31,14 +31,18 @@ class PostController extends BaseController
 
     }
 
-    public function executeShow()
+    public function executeShow()    
     {
-        Flash::setFlash('alert', 'je suis une alerte');
+        $post_id = intval($this->params['id']);
+        $postManager = new PostManager();
+        $post = $postManager->getPostById($post_id);
 
         $this->render(
             'show.php',
             [
-                'test' => 'article ' . $this->params['id']
+                'post_id' => $post_id, 
+                'post' => $post,
+                'postManager' => $postManager,
             ],
             'Show Page'
         );

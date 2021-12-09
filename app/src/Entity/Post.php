@@ -4,12 +4,12 @@ namespace App\Entity;
 
 class Post
 {
-    private int $id;
-    private string $date;
-    private string $title;
-    private string $content;
-    private string $author;
-    private int $authorId;
+    private $id_post;
+    private $date;
+    private $title;
+    private $content;
+    private $author;
+    private $authorId;
 
     /**
      * @return string
@@ -72,7 +72,7 @@ class Post
      */
     public function getId(): int
     {
-        return $this->id;
+        return $this->id_post;
     }
 
      /**
