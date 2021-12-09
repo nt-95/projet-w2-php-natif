@@ -52,4 +52,23 @@ class PostController extends BaseController
             'Auteur'
         );
     }
+
+    public function executeCreate()
+    {
+        $postManager = new PostManager(PDOFactory::getMysqlConnection());
+        $posts = $postManager->getAllPosts();
+
+        $this->render(
+            'create.php',
+            [
+                'posts' => $posts,
+                'postManager' => $postManager,
+                'user' => "Naiara",
+                // 'user' => new Author(),
+                'test' => 'je suis un test'
+            ],
+            'Create page'
+        );
+
+    }
 }
