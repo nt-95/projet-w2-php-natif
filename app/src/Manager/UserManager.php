@@ -109,9 +109,9 @@ class UserManager extends BaseManager
     public function remove(int $id_user)
     {
         try {
-            // $userManager = new UserManager();
+            $userManager = new UserManager();
             $query = $this->db->prepare('DELETE FROM user WHERE id_user= :id_user');
-            $query->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $query->bindParam(':id_user', $id_user, \PDO::PARAM_INT);
             $query->execute();
             // $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
             // $pdo = $this->db;
