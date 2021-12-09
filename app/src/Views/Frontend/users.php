@@ -23,7 +23,9 @@
                         <td><?= $user->getAdmin(); ?><td>
                     <?php endforeach; ?>
                 <td>
-                    <button type="button" class="btn btn-danger">Supprimer<i class="far fa-trash-alt"></i></button>
+                    <form name="x" action="remove?param=<?= $user->getIdUser(); ?>" method="post">
+                        <input class="btn btn-danger" type="submit" value="delate"><i class="far fa-trash-alt"></i>
+                    </form>
                 </td>
             </tr>
             </tbody>

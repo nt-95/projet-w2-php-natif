@@ -106,19 +106,23 @@ class UserManager extends BaseManager
         }
     }
 
-    public function remove(int $id_user) : bool
+    public function remove(int $id_user)
     {
         try {
-            $query = $this->db->query('DELETE FROM users WHERE id_user = :idUser');
-            $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
+            // $userManager = new UserManager();
+            $query = $this->db->prepare('DELETE FROM user WHERE id_user= :id_user');
+            $query->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $query->execute();
+            // $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
             // $pdo = $this->db;
             // $query = $pdo->prepare('DELETE FROM users WHERE user_id = :user_id');
-            $query->execute([
-                'id_user' => $id_user
-            ]);
+            // $query->execute([
+            //     'id_user' => $id_user
+            // ]);
+            // return $query->fetchAll();
 
-            $userManager = new UserManager();
-            $userManager->removePostByAuthorId($id_user);
+            
+            // $userManager->removePostByAuthorId($id_user);
         } catch (\PDOException $e) {
             ErrorHandler::homeRedirect($e->getMessage());
         }

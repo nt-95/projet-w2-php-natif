@@ -7,5 +7,5 @@
     <route path="signup" action="signup" controller="UserController"/>
     <!-- Liste des utilisateurs -->
     <route path="users" action="AllUsers" controller="UserController"/>
-    <route path="users/remove" action="removeUser" controller="UserController"/>
+    <route path= "remove" action="removeUser" controller="UserController" params="id_user"/>
 </routes>

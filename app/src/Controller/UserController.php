@@ -62,13 +62,17 @@ class UserController extends BaseController
     }
 
     public function executeRemoveUser() {
+        $id_user = $_GET['param'];
         $userManager = new UserManager();
-        $user = $userManager->executeRemoveUser($user_id);
+        $user = $userManager->remove($id_user);
 
-        // $this->render(
-        //     'users.php',
-        //     ['users' => $users, 'userManager'=> $userManager],
-        //     'utilisateurs');
+        Flash::setFlash('alert', 'Vous avez supprimer l\'utilisateur');
+
+        $this->render(
+            'users.php',
+            ['users' => $users, 'userManager'=> $userManager],
+            'utilisateurs'
+        );
     }
 
 }
