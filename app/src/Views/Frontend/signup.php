@@ -1,7 +1,6 @@
 <?php
 \App\Vendors\ErrorHandler::redirectIfLogin();
 
-
 if(isset($_POST['user_name']) && isset($_POST['admin']) && isset($_POST['password'])) {
     $userId = $userManager->add($_POST);
 
