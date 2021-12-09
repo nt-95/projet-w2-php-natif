@@ -57,19 +57,20 @@ class UserManager extends BaseManager
     public function add(array $data)
     {
         try {
-            $userEntity = new User();
+            /*$userEntity = new User();
             $userEntity->setUser($data);
-            $user = $userEntity->getUser();
-            $query = $this->db->query('INSERT INTO users (id_user, user_name, admin, password) VALUES (:idUser, :userName, :admin, :password)');
-            $query->bindValue(':idUser', $user['id_user'], \PDO::PARAM_INT);
-            $query->bindValue(':userName', $user['user_name'], \PDO::PARAM_STR);
-            $query->bindValue(':admin', $user['admin'], \PDO::PARAM_BOOL);
-            $query->bindValue(':password', $user['password'], \PDO::PARAM_STR);
-            $query->execute();
-            return $this->db->lastInsertId();
+            $user = $userEntity->getUser();*/
+            $query = $this->db->prepare('INSERT INTO user (id_user, user_name, admin, password) VALUES (:idUser, :userName, :admin, :password)');
+            $query->bindValue(':idUser', $data['id_user'], \PDO::PARAM_INT);
+            $query->bindValue(':userName', $data['user_name'], \PDO::PARAM_STR);
+            $query->bindValue(':admin', $data['admin'], \PDO::PARAM_BOOL);
+            $query->bindValue(':password', $data['password'], \PDO::PARAM_STR);
+            return $query->execute();
+
+            /*return $this->db->lastInsertId();*/
 
         } catch (\PDOException $e) {
-            ErrorHandler::homeRedirect($e->getMessage());
+           /* ErrorHandler::homeRedirect($e->getMessage());*/
         }
     }
 

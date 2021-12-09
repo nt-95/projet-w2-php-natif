@@ -19,9 +19,11 @@ class UserController extends BaseController
 
     public function executeSignUp()
     {
+        $userManager = new UserManager();
         return $this->render(
             'signup.php',
             [
+                'userManager'=> $userManager,
             ],
             'signup'
         );

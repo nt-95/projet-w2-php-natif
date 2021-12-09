@@ -1,13 +1,14 @@
 <?php
-\App\Vendors\ErrorHandler::redirectIfLogin();
+
+use \App\Fram\Utils\Flash;
 
 if(isset($_POST['user_name']) && isset($_POST['admin']) && isset($_POST['password'])) {
-    $userId = $userManager->add($_POST);
+    $isQueryExecuted = $userManager->add($_POST);
 
-    if(intVal($userId) > 0) {
-        \App\Vendors\SuccessHandler::successLogin($_POST['admin'], $_POST['user_name'], $userId, '/');
+    if($isQueryExecuted) {
+        Flash::setFlash("Success", "User Created");
     } else {
-        \App\Vendors\Flash::setFlash("Error", "alert");
+        Flash::setFlash("Error", "alert");
     }
 }
 ?>
@@ -15,11 +16,11 @@ if(isset($_POST['user_name']) && isset($_POST['admin']) && isset($_POST['passwor
 <form style="width: 50%; margin: auto;" method="post">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">User Name</label>
-        <input type="email" name="email" class="form-control" id="exampleFormControlInput1" required>
+        <input name="user_name" class="form-control" id="exampleFormControlInput1">
     </div>
     <div class="mb-3">
         <label class="form-label" for="select_role">Role</label>
-        <select class="form-control" name="role" id="select_role">
+        <select class="form-control" name="admin" id="select_role">
             <option value="default">Default</option>
             <option value="admin">Admin</option>
         </select>
