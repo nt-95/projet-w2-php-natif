@@ -7,7 +7,7 @@ class Entity
 {
     public function save() {
         $pdo = new PDOFactory();
-        $pdo = $pdo->getBdd();
+        $pdo = $pdo->getDb();
         foreach ($this as $key => $value) {
             return "$key => $value";
         }
