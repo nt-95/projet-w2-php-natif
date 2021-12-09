@@ -14,7 +14,7 @@ class PostController extends BaseController
      */
     public function executeIndex()
     {
-        $postManager = new PostManager(PDOFactory::getMysqlConnection());
+        $postManager = new PostManager();
         $posts = $postManager->getAllPosts();
 
         $this->render(
