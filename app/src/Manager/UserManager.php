@@ -117,16 +117,11 @@ class UserManager extends BaseManager
                 'id_user' => $id_user
             ]);
 
-            $postManager = new PostManager();
-            $postManager->removePostByAuthorId($id_user);
+            $userManager = new UserManager();
+            $userManager->removePostByAuthorId($id_user);
         } catch (\PDOException $e) {
             ErrorHandler::homeRedirect($e->getMessage());
         }
 
-    }
-
-    public function setAdmin(int $id_user) : bool
-    {
-        // TODO : Define
     }
 }

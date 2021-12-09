@@ -23,7 +23,6 @@
                         <td><?= $user->getAdmin(); ?><td>
                     <?php endforeach; ?>
                 <td>
-                    <button type="button" class="btn btn-primary">Mettre admin<i class="far fa-eye"></i></button>
                     <button type="button" class="btn btn-danger">Supprimer<i class="far fa-trash-alt"></i></button>
                 </td>
             </tr>

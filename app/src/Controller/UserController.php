@@ -71,15 +71,5 @@ class UserController extends BaseController
         //     'utilisateurs');
     }
 
-    public function executeSetAdmin() {
-        $userManager = new UserManager();
-        $user = $userManager->executeSetAdmin($user_id);
-        Flash::setFlash('alert', 'Vous venez de passer cette personne en admin');
-
-        // $this->render(
-        //     'users.php',
-        //     ['users' => $users, 'userManager'=> $userManager],
-        //     'utilisateurs');
-    }
 }
 
