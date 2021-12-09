@@ -55,7 +55,7 @@ class PostController extends BaseController
 
     public function executeCreate()
     {
-        $postManager = new PostManager(PDOFactory::getMysqlConnection());
+        $postManager = new PostManager();
         $posts = $postManager->getAllPosts();
 
         $this->render(
