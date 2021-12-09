@@ -13,14 +13,23 @@
         </div>
 
         <?php
-        foreach ($posts as $post) :
-            ?>
-            <div class="container">
-                <h2><?= $post->getTitle(); ?></h2>
-                <h3><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></h3>
-                <p><?= $post->getContent(); ?></p>
-            </div>    
-        <?php endforeach; ?>
-        
+        if (count($posts) == 0) {
+            echo "You have no posts yet.";
+            ?><br />
+            <form action="/create">
+            <input type="submit" value ="Create your first post!"></input>
+            </form><?php
+        }
+        else {
+            foreach ($posts as $post) :
+                ?>
+                <div class="container">
+                    <h2><?= $post->getTitle(); ?></h2>
+                    <h3><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></h3>
+                    <p><?= $post->getContent(); ?></p>
+                </div>    
+            <?php endforeach; 
+        }
+        ?>
     <div>    
 </div>
