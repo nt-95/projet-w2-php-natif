@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\BaseController;
 use App\Fram\Factories\PDOFactory;
+use App\Fram\Utils\Flash;
 use App\Entity\User;
 use App\Manager\UserManager;
 
@@ -52,5 +53,26 @@ class UserController extends BaseController
             'users.php',
             ['users' => $users, 'userManager'=> $userManager],
             'utilisateurs');
+    }
+
+    public function executeRemoveUser() {
+        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $user = $userManager->executeRemoveUser($user_id);
+
+        // $this->render(
+        //     'users.php',
+        //     ['users' => $users, 'userManager'=> $userManager],
+        //     'utilisateurs');
+    }
+
+    public function executeSetAdmin() {
+        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $user = $userManager->executeSetAdmin($user_id);
+        Flash::setFlash('alert', 'Vous venez de passer cette personne en admin');
+
+        // $this->render(
+        //     'users.php',
+        //     ['users' => $users, 'userManager'=> $userManager],
+        //     'utilisateurs');
     }
 }

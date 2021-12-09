@@ -111,11 +111,13 @@ class UserManager extends BaseManager
         }
     }
 
-    public function remove(int $user_id)
+    public function remove(int $user_id) : bool
     {
         try {
-            $pdo = $this->db;
-            $query = $pdo->prepare('DELETE FROM users WHERE user_id = :user_id');
+            $query = $this->db->query('DELETE FROM users WHERE user_id = :user_id');
+            $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
+            // $pdo = $this->db;
+            // $query = $pdo->prepare('DELETE FROM users WHERE user_id = :user_id');
             $query->execute([
                 'user_id' => $user_id
             ]);
@@ -126,5 +128,18 @@ class UserManager extends BaseManager
             ErrorHandler::homeRedirect($e->getMessage());
         }
 
+    }
+
+    public function getAllUsers() : array
+    {
+        $query = $this->db->query('SELECT * FROM user');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
+
+        return $query->fetchAll();
+    }
+
+    public function setAdmin(int $id_user) : bool
+    {
+        // TODO : Define
     }
 }
