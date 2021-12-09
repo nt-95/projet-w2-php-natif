@@ -25,7 +25,7 @@
                 ?>
                 <div class="container">
                     <h2><?= $post->getTitle(); ?></h2>
-                    <h3><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></h3>
+                    <div><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></div>
                     <p><?= $post->getContent(); ?></p>
                 </div>    
             <?php endforeach; 
