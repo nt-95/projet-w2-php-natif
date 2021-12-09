@@ -7,5 +7,5 @@
     <route path="author" action="author" controller="PostController"/>
 
     <!-- Liste des utilisateurs -->
-    <route path="users" action="showUsers" controller="UserController"/>
+    <route path="users" action="AllUsers" controller="UserController"/>
 </routes>

@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace App\Manager;
 
 use App\Entity\Entity;
 use App\Entity\User;
@@ -7,11 +7,10 @@ use App\Manager\BaseManager;
 
 class UserManager extends BaseManager
 {
-    public function getAllUsers()
+    public function getAllUsers() : array
     {
-        $query = $this->db->prepare('SELECT * FROM users');
-        $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\User');
+        $query = $this->db->query('SELECT * FROM user');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
 
         return $query->fetchAll();
     }

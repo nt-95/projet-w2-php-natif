@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
+use App\Fram\Factories\PDOFactory;
+use App\Entity\User;
+use App\Manager\UserManager;
 
 class UserController extends BaseController
 {
@@ -39,5 +42,15 @@ class UserController extends BaseController
         $connectedUser = intval($_SESSION['user']['id']);
         $user = $manager->getSingleUser($connectedUser);
         return $this->render('Update Account', 'update-account', $user);
+    }
+
+    public function executeAllUsers() {
+        $userManager = new UserManager(PDOFactory::getMysqlConnection());
+        $users = $userManager->getAllUsers();
+
+        $this->render(
+            'users.php',
+            ['users' => $users, 'userManager'=> $userManager],
+            'utilisateurs');
     }
 }
