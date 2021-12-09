@@ -4,30 +4,32 @@ namespace App\Entity;
 
 class User {
 
-    private $first_name;
-    private $last_name;
-    private $email;
-    private $role;
+    private $id_user;
+    private $user_name;
     private $password;
+    private $admin;
 
     public function setUser($data) {
-        $this->setEmail($data['email']);
+        $this->setIdUser($data['id_user']);
+        $this->setUserName($data['user_name']);
         $this->setPassword($data['password']);
-        $this->setFirstName($data['first_name']);
-        $this->setLastName($data['last_name']);
-        $this->setRole($data['admin']);
+        $this->setAdmin($data['admin']);
     }
 
-    public function setEmail(string $email) {
-        if(strlen($email) > 0) {
-            $checkMail = htmlspecialchars($email);
-            if(filter_var($checkMail, FILTER_VALIDATE_EMAIL)) {
-                $this->email = $checkMail;
-            } else {
-                Flash::setFlash('invalid mail', 'alert');
-            }
+
+    public function setIdUser(string $idUser) {
+        if(strlen($idUser) > 0) {
+            $this->id_user = htmlspecialchars($idUser);
         } else {
-            $this->email = NULL;
+            $this->id_user = NULL;
+        }
+    }
+
+    public function setUserName(string $userName) {
+        if(strlen($userName) > 0){
+            $this->user_name = htmlspecialchars($userName);
+        } else {
+            $this->user_name = NULL;
         }
 
     }
@@ -41,56 +43,30 @@ class User {
 
     }
 
-    public function setFirstName(string $firstName) {
-        if(strlen($firstName) > 0){
-            $this->first_name = htmlspecialchars($firstName);
+    public function setAdmin(string $admin) {
+        if(strlen($admin) > 0) {
+            $this->admin = htmlspecialchars($admin);
         } else {
-            $this->first_name = NULL;
-        }
-
-    }
-
-    public function setLastName(string $lastName) {
-        if(strlen($lastName) > 0) {
-            $this->last_name = htmlspecialchars($lastName);
-        } else {
-            $this->last_name = NULL;
-        }
-    }
-
-    public function setRole(string $role) {
-        if(strlen($role) > 0) {
-            $this->role = htmlspecialchars($role);
-        } else {
-            $this->first_name = NULL;
+            $this->admin = NULL;
         }
     }
 
 
     public function getUser() {
-        $user['first_name'] = $this->first_name;
-        $user['last_name'] = $this->last_name;
-        $user['email'] = $this->email;
-        $user['admin'] = $this->role;
+        $user['id_user'] = $this->id_user;
+        $user['user_name'] = $this->user_name;
         $user['password'] = $this->password;
+        $user['admin'] = $this->admin;
 
         return $user;
     }
 
-    public function getFirstname () {
-        return $this->first_name;
+    public function getUserName() {
+        return $this->user_name;
     }
 
-    public function getLastName () {
-        return $this->last_name;
-    }
-
-    public function getEmail () {
-        return $this->email;
-    }
-
-    public function getRole() {
-        return $this->role;
+    public function getAdmin() {
+        return $this->admin;
     }
 
     public function getPassword () {

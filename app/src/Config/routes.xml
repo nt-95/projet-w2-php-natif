@@ -4,4 +4,5 @@
     <route path="/" action="index" controller="PostController"/>
     <route path="show" action="show" controller="PostController" params="id"/>
     <route path="author" action="author" controller="PostController"/>
+    <route path="signup" action="signup" controller="UserController"/>
 </routes>
