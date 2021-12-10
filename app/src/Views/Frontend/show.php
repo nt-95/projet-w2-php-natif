@@ -1,6 +1,3 @@
-<?= $upload_dir . $post->getImageName();?>
-
-
 <div class="container border my-3 d-flex justify-content-center">
     <div class="container">
         <h1><?= $post_id; ?></h1>
