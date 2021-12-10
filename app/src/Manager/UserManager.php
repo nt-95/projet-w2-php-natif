@@ -4,6 +4,8 @@ namespace App\Manager;
 use App\Entity\Entity;
 use App\Entity\User;
 use App\Manager\BaseManager;
+use MongoDB\Driver\Session;
+use App\Fram\Utils\Flash;
 
 class UserManager extends BaseManager
 {
@@ -27,26 +29,24 @@ class UserManager extends BaseManager
 
     public function login(string $user_name, string $password)
     {
-        $userEntity = new User();
-        $userEntity->setUserName($user_name);
+        $res= $this->db->prepare("SELECT * FROM user WHERE user_name = :user_name AND password = :password");
+        $res->bindParam(':user_name', $user_name, \PDO::PARAM_STR);
+        $res->bindParam(':password', $password, \PDO::PARAM_STR);
+        $res->execute();
+        var_dump($res);
 
-        $query = $this->db->query('SELECT * FROM user WHERE user_name = :userName');
-        $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\User');
+        if ($res == TRUE) {
+            $query = $this->db->prepare('SELECT * FROM user WHERE user_name = :user_name');
+            $query->bindParam(':user_name', $user_name, \PDO::PARAM_STR);
+            $query->execute();
+            /*header('location:/');*/
 
-        $user = $query->fetch();
-
-        if ($user === false) {
-            ErrorHandler::wrongLogin();
-        } else {
-            if (password_verify($password, $user['password'])) {
-                SuccessHandler::successLogin($user['admin'], $user['user_name'], $user['id_user'], "/");
-            } else {
-                ErrorHandler::wrongLogin();
-            }
+            session_start();
+            $_SESSION['admin']=$admin;
         }
-
-        return $user;
+        else {
+            Flash::setFlash("error", "Your login is false");
+        }
     }
 
     public function logout()
@@ -117,7 +117,7 @@ class UserManager extends BaseManager
             $query->execute();
         
         } catch (\PDOException $e) {
-            ErrorHandler::homeRedirect($e->getMessage());
+            echo $e;
         }
 
     }

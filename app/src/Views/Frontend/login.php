@@ -1,14 +1,3 @@
-<?php
-use App\Manager\UserManager;
-
-$userManager = new UserManager();
-
-if($_SESSION['user_name']){
-    header('Location: /');
-} elseif (isset($_POST['user_name']) && isset($_POST['password'])) {
-    $userManager->login($_POST['user_name'], $_POST['password']);
-}
-?>
 
 <form style="margin: 50px auto; width: 50%" method="post">
     <h2>Login</h2>
