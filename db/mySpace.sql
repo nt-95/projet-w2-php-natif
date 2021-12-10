@@ -46,7 +46,8 @@ CREATE TABLE `post` (
   `id_post` int(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` varchar(280) NOT NULL,
-  `author` varchar(100) NOT NULL
+  `author` varchar(100) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
