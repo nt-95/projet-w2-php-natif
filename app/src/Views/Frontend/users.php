@@ -15,18 +15,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
                 <?php
                     foreach ($users as $user) :
                         ?>
-                        <td><?= $user->getUserName(); ?></td>
-                        <td><?= $user->getAdmin(); ?><td>
+                        <tr>
+                            <td><?= $user->getUserName(); ?></td>
+                            <td><?= $user->getAdmin(); ?><td>
+                            <td>
+                                <form name="x" action="remove?param=<?= $user->getIdUser(); ?>" method="post">
+                                    <input class="btn btn-danger" type="submit" value="Delete"><i class="far fa-trash-alt"></i>
+                                </form>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
-                <td>
-                    <button type="button" class="btn btn-primary">Mettre admin<i class="far fa-eye"></i></button>
-                    <button type="button" class="btn btn-danger">Supprimer<i class="far fa-trash-alt"></i></button>
-                </td>
-            </tr>
             </tbody>
         </table>
         </div>

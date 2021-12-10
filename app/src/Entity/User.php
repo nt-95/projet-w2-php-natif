@@ -61,6 +61,11 @@ class User {
         return $user;
     }
 
+    public function getIdUser() {
+        $id_user = $this->id_user;
+        return $id_user;
+    }
+
     public function getUserName() {
         return $this->user_name;
     }
