@@ -25,6 +25,7 @@ class Router
                         $params[$param] = $_GET[$param];
                     }
                 }
+
                 return new $controllerClass($action, $params);
             }
 

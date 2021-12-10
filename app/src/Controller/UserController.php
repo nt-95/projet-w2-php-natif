@@ -11,6 +11,10 @@ class UserController extends BaseController
 {
     public function executeLogin() {
         $userManager = new UserManager();
+
+        if (isset($_POST['user_name']) && isset($_POST['password'])) {
+                $userManager->login($_POST['user_name'], $_POST['password']);
+        }
         $this->render(
             'login.php',
             ['userManager'=> $userManager],
@@ -20,7 +24,18 @@ class UserController extends BaseController
     public function executeSignUp()
     {
         $userManager = new UserManager();
-        return $this->render(
+        if(isset($_POST['user_name']) && isset($_POST['password'])) {
+            $isQueryExecuted = $userManager->add($_POST);
+
+        if($isQueryExecuted) {
+            Flash::setFlash("success", "Welcome !");
+            header('location:/login');
+        } else {
+            Flash::setFlash("error", "The user could not be created.");
+            }
+        }
+
+        $this->render(
             'signup.php',
             [
                 'userManager'=> $userManager,

@@ -1,18 +1,3 @@
-<?php
-
-use App\Fram\Utils\Flash;
-
-if(isset($_POST['user_name']) && isset($_POST['password'])) {
-    $isQueryExecuted = $userManager->add($_POST);
-
-    if($isQueryExecuted) {
-        Flash::setFlash("success", "Welcome !");
-    } else {
-        Flash::setFlash("error", "The user could not be created.");
-    }
-}
-?>
-
 <form style="margin: 50px auto; width: 50%" method="post">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">User Name</label>

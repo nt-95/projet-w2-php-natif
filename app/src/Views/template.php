@@ -27,10 +27,13 @@
                 <li><a href="/users" class="nav-link px-2 text-white">User list</a></li>
             </ul>
 
-            <div class="text-end">
+            <?php if ($_SESSION['admin']==FALSE) { ?>
+                <div class="text-end">
                 <a href="/login"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
                 <a href="/signup"><button type="button" class="btn btn-warning">Sign-up</button></a>
             </div>
+                <!--Boutton Logout-->
+           <?php } ?>
         </div>
     </div>
 </header>
