@@ -67,10 +67,11 @@ class UserManager extends BaseManager
             $query->bindValue(':password', $data['password'], \PDO::PARAM_STR);
             return $query->execute();
 
-            /*return $this->db->lastInsertId();*/
 
-        } catch (\PDOException $e) {
-           /* ErrorHandler::homeRedirect($e->getMessage());*/
+
+        }
+        catch (\PDOException $e) {
+
         }
     }
 

@@ -33,18 +33,6 @@ class UserController extends BaseController
         return $this->render('Logout', 'logout', []);
     }
 
-    public function showRegister() {
-        return $this->render('Register', 'register', []);
-    }
-
-    public function showAccount() {
-        ErrorHandler::redirectIfNoLogin();
-        $manager = new UserManager();
-        $connectedUser = intval($_SESSION['user']['id']);
-        $user = $manager->getSingleUser($connectedUser);
-        return $this->render('Account', 'account', $user);
-    }
-
     public function showUpdateAccount() {
         ErrorHandler::redirectIfNoLogin();
         $manager = new UserManager();
