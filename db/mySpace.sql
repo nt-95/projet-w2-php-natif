@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : lun. 06 déc. 2021 à 16:08
+-- Généré le : ven. 10 déc. 2021 à 15:46
 -- Version du serveur : 10.6.4-MariaDB-1:10.6.4+maria~focal
 -- Version de PHP : 7.4.25
 
@@ -24,7 +24,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `MySpace` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
 USE `MySpace`;
-
 -- --------------------------------------------------------
 
 --
@@ -47,9 +46,16 @@ CREATE TABLE `post` (
   `title` varchar(100) NOT NULL,
   `content` varchar(280) NOT NULL,
   `author` varchar(100) NOT NULL,
-  `date` date NOT NULL,
-  `img_name` varchar(255) NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `post`
+--
+
+INSERT INTO `post` (`id_post`, `title`, `content`, `author`, `date`) VALUES
+(1, '1er post', 'bfbfekbjfmbbkkbnsnbndjnvlkdljb', 'Moi', '2021-12-08'),
+(2, '2e post', 'fsnvsfpbjfsjbnfsljfsn', 'Truc', '2021-12-07');
 
 -- --------------------------------------------------------
 
@@ -63,6 +69,15 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `user_name`, `password`, `admin`) VALUES
+(1, 'user', 'jcsjvk', 1),
+(2, 'vbfeoibeibj', 'vksbvkfsb', 1),
+(3, 'jfbfsi', 'dvsvj', 0);
 
 -- --------------------------------------------------------
 
@@ -122,13 +137,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_post` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
