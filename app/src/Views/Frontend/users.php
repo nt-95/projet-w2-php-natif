@@ -23,7 +23,7 @@
                             <td><?= $user->getAdmin(); ?><td>
                             <td>
                                 <form name="x" action="remove?param=<?= $user->getIdUser(); ?>" method="post">
-                                    <input class="btn btn-danger" type="submit" value="delate"><i class="far fa-trash-alt"></i>
+                                    <input class="btn btn-danger" type="submit" value="Delete"><i class="far fa-trash-alt"></i>
                                 </form>
                             </td>
                         </tr>
