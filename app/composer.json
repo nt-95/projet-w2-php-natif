@@ -1,5 +1,5 @@
 {
-    "name": "jean-francois/app",
+    "name": "my-space/app",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -7,11 +7,20 @@
     },
     "authors": [
         {
-            "name": "John-Bob-DIRIENZO",
-            "email": "jf.dirienzo@gmail.com"
+            "name": "Melissande",
+            "email": "melissande.dizy@hetic.net"
+        },
+        {
+            "name": "Naiara",
+            "email": "naiara.trivino@hetic.net"
+        },
+        {
+            "name": "Nassim",
+            "email": "nassim.yazi@hetic.net"
         }
     ],
     "require": {
-        "michelf/php-markdown": "^1.9"
+        "michelf/php-markdown": "^1.9",
+      "ext-pdo": "*"
     }
 }
