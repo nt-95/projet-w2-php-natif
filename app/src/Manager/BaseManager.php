@@ -2,11 +2,10 @@
 
 namespace App\Manager;
 
-use App\Manager\PDO\PDOFactory;
+use App\Fram\Factories\PDOFactory;
 
 abstract class BaseManager
 {
-    protected $db;
 
     public function __construct()
     {

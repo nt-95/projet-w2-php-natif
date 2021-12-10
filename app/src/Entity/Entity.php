@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-use App\Manager\PDO\PDOFactory;
+use App\Fram\Factories\PDOFactory;
 
 class Entity
 {

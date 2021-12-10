@@ -2,10 +2,23 @@
 
 namespace App\Fram\Factories;
 
+use PDO;
+
 class PDOFactory
 {
-    public static function getMysqlConnection()
-    {
-        // TODO - Get PDO
+    private $db;
+
+    public function __construct()  {
+        try {
+            $this->db = new PDO('mysql:host=db;dbname=MySpace', 'root', 'password');
+        }
+        catch (PDOException $e) {
+            die('Error :' . $e->getMessage());
+
+        }
+    }
+
+    public function getDb() {
+        return $this->db;
     }
 }

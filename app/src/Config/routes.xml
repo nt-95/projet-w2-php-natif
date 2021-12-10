@@ -5,4 +5,8 @@
     <route path="show" action="show" controller="PostController" params="id"/>
     <route path="author" action="author" controller="PostController"/>
     <route path="create" action="create" controller="PostController"/>
+    <route path="signup" action="signup" controller="UserController"/>
+    <!-- Liste des utilisateurs -->
+    <route path="users" action="AllUsers" controller="UserController"/>
+    <route path= "remove" action="removeUser" controller="UserController" params="id_user"/>
 </routes>
