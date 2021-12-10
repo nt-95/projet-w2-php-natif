@@ -10,6 +10,7 @@ class Post
     private $content;
     private $author;
     private $authorId;
+    private $img_name;
 
     /**
      * @return string
@@ -81,6 +82,10 @@ class Post
     public function getAuthorId(): int
     {
         return $this->authorId;
+    }
+
+    public function getImageName(): string {
+        return $this->img_name;
     }
 
 }
