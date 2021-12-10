@@ -35,8 +35,8 @@ use App\Fram\Utils\Flash;
 <h1>Write a new post</h1>
 <form method='POST'>
     <label for="title">Title</label><br>
-    <input type="text" id="title" name="title"><br>
+    <input class="form-text mb-3" type="text" id="title" name="title"><br>
     <label for="content">Content</label><br>
-    <textarea name="content" cols="40" rows="5"></textarea><br>
-     <input type="submit" name="submit" value="Post">
+    <textarea  class="form-text mb-3" name="content" cols="40" rows="5"></textarea><br>
+     <input class="btn btn-primary" type="submit" name="submit" value="Post">
 </form>
