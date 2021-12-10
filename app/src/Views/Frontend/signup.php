@@ -6,9 +6,9 @@ if(isset($_POST['user_name']) && isset($_POST['password'])) {
     $isQueryExecuted = $userManager->add($_POST);
 
     if($isQueryExecuted) {
-        Flash::setFlash("Success", "User Created");
+        Flash::setFlash("success", "Welcome !");
     } else {
-        Flash::setFlash("Error", "alert");
+        Flash::setFlash("error", "The user could not be created.");
     }
 }
 ?>
