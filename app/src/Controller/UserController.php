@@ -66,8 +66,7 @@ class UserController extends BaseController
         $userManager = new UserManager();
         $user = $userManager->remove($id_user);
 
-        Flash::setFlash('alert', 'Vous avez supprimer l\'utilisateur');
-
+        header('Location: /users');
         $this->render(
             'users.php',
             ['users' => $users, 'userManager'=> $userManager],

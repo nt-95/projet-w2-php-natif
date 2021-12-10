@@ -30,7 +30,7 @@ class PostController extends BaseController
 
     public function executeShow()
     {
-        Flash::setFlash('alert', 'je suis une alerte');
+        Flash::setFlash('delate', 'je suis une alerte');
 
         $this->render(
             'show.php',
