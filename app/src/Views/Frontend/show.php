@@ -5,9 +5,9 @@
         <div><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></div>
         <img class="img-fluid my-4" src="https://i.imgur.com/Eukht.jpeg"/>
         <p><?= $post->getContent(); ?></p>
-        <div class="mb-4">
-            <button class="btn btn-primary">Edit</button>
+        <form class="mb-4" action="remove?param=<?= $post_id?>" method="post">
+            <!-- <button class="btn btn-primary">Edit</button> -->
             <button class="btn btn-danger">Delete</button>
-        </div>
+        </form>
     </div>
 </div>
