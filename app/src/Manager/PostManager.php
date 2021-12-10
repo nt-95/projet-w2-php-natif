@@ -61,8 +61,15 @@ class PostManager extends BaseManager
      * @param int $id
      * @return bool
      */
-    public function deletePostById(int $id): bool
-    {
-        // TODO - Delete post
+    public function deletePostById(int $id): bool {
+        try {
+                $postManager = new PostManager();
+                $query = $this->db->prepare('DELETE FROM post WHERE id_post= :id');
+                $query->bindParam(':id', $id, \PDO::PARAM_INT);
+                return $query->execute();
+            
+            } catch (\PDOException $e) {
+                echo $e->getMessage();
+            }
     }
 }

@@ -74,4 +74,21 @@ class PostController extends BaseController
         );
 
     }
+
+    public function executeRemove()
+    {
+        $post_id = intval($this->params['id']);
+        $postManager = new PostManager();
+        $isDeleted = $postManager->deletePostById($post_id);
+
+        $this->render(
+            'remove.php',
+            [
+                'post_id' => $post_id, 
+                'isDeleted' => $isDeleted,
+                'postManager' => $postManager,
+            ],
+            'Remove Page'
+        );
+    }
 }

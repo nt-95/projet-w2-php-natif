@@ -4,8 +4,8 @@
         <h2 class="mt-2"><?= $post->getTitle(); ?></h2>
         <div><?= "Posted by " . $post->getAuthor() . " on " . $post->getDate(); ?></div>
         <img class="img-fluid my-4" src="https://i.imgur.com/Eukht.jpeg"/>
-        <p><?= $post->getContent(); ?></p>
-        <form class="mb-4" action="remove?param=<?= $post_id?>" method="post">
+        <p><?= $post->getContent(); ?></p>       
+        <form class="mb-4" action="/remove/<?= $post_id?>" method="POST">
             <!-- <button class="btn btn-primary">Edit</button> -->
             <button class="btn btn-danger">Delete</button>
         </form>
