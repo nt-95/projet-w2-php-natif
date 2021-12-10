@@ -36,14 +36,15 @@ class PostManager extends BaseManager
      * @param Post $post
      * @return Post|bool
      */
-    public function createPost(string $title, string $content, string $user) : bool
+    public function createPost(string $title, string $content, string $user, string $img_name) : bool
     {
         // TODO - create post
-        $insert = 'INSERT INTO `post` (`id_post`, `title`, `content`, `author`, `date`) VALUES (NULL, :title, :content, :author, CURRENT_DATE())';
+        $insert = 'INSERT INTO `post` (`id_post`, `title`, `content`, `author`, `date`, `img_name`) VALUES (NULL, :title, :content, :author, CURRENT_DATE(), :img_name)';
         $query = $this->db->prepare($insert);
         $query->bindValue(':title', $title, \PDO::PARAM_STR);
         $query->bindValue(':content', $content, \PDO::PARAM_STR);
         $query->bindValue(':author', $user, \PDO::PARAM_STR);
+        $query->bindValue(':img_name', $img_name, \PDO::PARAM_STR);
         return $query->execute();
         
     }
