@@ -6,7 +6,6 @@
  */
 
 use App\Fram\Utils\Flash;
-$upload_dir = '/var/www/html/src/Assets/Uploads/';
 
  if(isset($_POST['submit'])){
     // Fetching variables of the form which travels in URL

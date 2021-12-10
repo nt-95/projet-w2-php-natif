@@ -35,6 +35,7 @@ class PostController extends BaseController
         $post_id = intval($this->params['id']);
         $postManager = new PostManager();
         $post = $postManager->getPostById($post_id);
+        $upload_dir = '/var/www/html/src/Assets/Uploads/';
 
         $this->render(
             'show.php',
@@ -42,6 +43,7 @@ class PostController extends BaseController
                 'post_id' => $post_id, 
                 'post' => $post,
                 'postManager' => $postManager,
+                'upload_dir' => $upload_dir
             ],
             'Show Page'
         );
@@ -60,6 +62,8 @@ class PostController extends BaseController
     {
         $postManager = new PostManager();
         $posts = $postManager->getAllPosts();
+        $upload_dir = '/var/www/html/src/Assets/Uploads/';
+
 
         $this->render(
             'create.php',
@@ -68,7 +72,9 @@ class PostController extends BaseController
                 'postManager' => $postManager,
                 'user' => "user_name",
                 // 'user' => new Author(),
-                'test' => 'je suis un test'
+                'test' => 'je suis un test',
+                'upload_dir' => $upload_dir
+
             ],
             'Create page'
         );
