@@ -16,7 +16,7 @@
         if (count($posts) == 0) {
          
             ?>
-            <div>
+            <div class="text-center">
             <p>You have no posts yet.</p>
             <form action="/create">
             <input type="submit" value ="Create your first post!"></input>
