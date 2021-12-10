@@ -63,7 +63,7 @@ class UserManager extends BaseManager
             $query = $this->db->prepare('INSERT INTO user (id_user, user_name, admin, password) VALUES (:idUser, :userName, :admin, :password)');
             $query->bindValue(':idUser', $data['id_user'], \PDO::PARAM_INT);
             $query->bindValue(':userName', $data['user_name'], \PDO::PARAM_STR);
-            $query->bindValue(':admin', $data['admin'], \PDO::PARAM_BOOL);
+            $query->bindValue(':admin', isset($data['admin']) ? $data['admin']:FALSE, \PDO::PARAM_BOOL);
             $query->bindValue(':password', $data['password'], \PDO::PARAM_STR);
             return $query->execute();
 
